@@ -4,6 +4,11 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+accounts
+archive
+live
+renewal
+ovh-config.json
 
 # Runtime data
 pids

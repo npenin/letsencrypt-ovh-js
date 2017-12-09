@@ -8,7 +8,7 @@ var ovhConfig={
   appSecret: "1FafdjqJ67ne97VMtarJZaU0s0UGf3Jm",
 };
 
-if(fs.existsSync('./ovh-config.json'))
+if(fs.existsSync(__dirname+'/ovh-config.json'))
 	ovhConfig=require('./ovh-config.json')
 
 var ovh=require('ovh')(ovhConfig);

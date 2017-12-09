@@ -6,9 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Nicolas Penin <nicolas.penin@dragon-angel.fr>",
+  "license": "MIT",
   "dependencies": {
+    "greenlock": "^2.1.18",
+    "le-store-certbot": "^2.0.5",
     "ovh": "^2.0.1"
-  }
+  },
+  "repository": "https://github.com/npenin/letsencrypt-ovh-js.git"
 }
