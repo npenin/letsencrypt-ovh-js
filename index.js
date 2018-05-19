@@ -39,7 +39,7 @@ process.stdin.once('data', function (email)
 
     email = email.toString('utf8');
     email = email.replace(/^[\r\n\s]+/g, '').replace(/[\r\n\s]+$/g, '');
-    console.log(email);
+    // console.log(email);
   }
 
   function leAgree(opts, agreeCb)
@@ -99,9 +99,25 @@ process.stdin.once('data', function (email)
       , rsaKeySize: 2048
       , challengeType: 'dns-01'
 
-    }).then(function (results)
+    }).then(function (cert)
     {
-      console.log('success');
+      // console.log(cert);
+      if (cert.expiresAt - new Date().valueOf() < 24 * 60 * 60000)
+        le.renew({
+
+          domains: process.argv.slice(2)
+          , email: email
+          , agreeTos: true
+          , rsaKeySize: 2048
+          , challengeType: 'dns-01'
+
+        }, cert).then((results) =>
+        {
+          console.log(results);
+          console.log('success');
+        })
+      else
+        console.log('success');
 
     }, function (err)
       {
@@ -114,5 +130,6 @@ process.stdin.once('data', function (email)
         console.error(err.stack);
 
       });
+
   }
 });
